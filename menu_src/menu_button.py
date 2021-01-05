@@ -1,6 +1,6 @@
 import pygame
-from button import Button
-from play import Play
+from menu_src.button import Button
+from menu_src.play import Play
 import constant as c
 
 

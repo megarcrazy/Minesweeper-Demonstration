@@ -1,5 +1,5 @@
 import pygame
-from menu_button import MenuButton
+from menu_src.menu_button import MenuButton
 from scene_manager import SceneManager
 import constant as c
 

@@ -1,6 +1,6 @@
 import pygame
 from scene_manager import SceneManager
-from minesweeper.grid import Grid
+from minesweeper_game.grid import Grid
 import constant as c
 
 

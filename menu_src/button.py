@@ -1,6 +1,4 @@
-import pygame
-from rectangle import Rectangle
-import constant as c
+from menu_src.rectangle import Rectangle
 
 
 class Button:

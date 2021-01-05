@@ -1,8 +1,8 @@
 import pygame
 import random
-from minesweeper.tile import Tile
-from minesweeper.adjancent_index_list import AdjacentIndexList
-from minesweeper.tracker import Tracker
+from minesweeper_game.tile import Tile
+from minesweeper_game.adjancent_index_list import AdjacentIndexList
+from minesweeper_game.tracker import Tracker
 import constant as c
 
 

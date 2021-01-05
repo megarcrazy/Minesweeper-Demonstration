@@ -1,6 +1,5 @@
 import pygame
-import threading
-from menu import Menu
+from menu_src.menu import Menu
 import constant as c
 
 
