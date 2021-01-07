@@ -19,6 +19,7 @@ class Game:
                 if event.type == pygame.QUIT:
                     self._state = False
 
+            self.keyboard_input()
             self._scene.update()
             self._scene.render()
             self._scene = self._scene.next
@@ -28,3 +29,11 @@ class Game:
 
     def create_window(self):
         self._screen = pygame.display.set_mode((c.SCREEN_WIDTH, c.SCREEN_HEIGHT))
+
+    def keyboard_input(self):
+        key = pygame.key.get_pressed()
+        if key[pygame.K_r]:
+            self.restart()
+
+    def restart(self):
+        self._scene = Menu(self._screen)
