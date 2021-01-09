@@ -1,6 +1,6 @@
 import pygame
 from menu_src.button import Button
-from menu_src.play import Play
+from minesweeper_game.play import Play
 import constant as c
 
 
