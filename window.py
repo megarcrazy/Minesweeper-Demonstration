@@ -3,7 +3,7 @@ from menu_src.menu import Menu
 import constant as c
 
 
-class Game:
+class Window:
 
     def __init__(self):
         pygame.init()

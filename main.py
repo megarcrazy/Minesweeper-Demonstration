@@ -1,8 +1,8 @@
-from game import Game
+from window import Window
 
 
 def main():
-    game = Game()
+    game = Window()
     game.run()
 
 
