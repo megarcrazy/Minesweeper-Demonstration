@@ -1,7 +1,7 @@
 import pygame
-from src.menu_scene.button_start import StartButton
-from src.menu_scene.button_settings import SettingsButton
-from src.menu_scene.button_instructions import InstructionsButton
+from src.menu_window.button_start import StartButton
+from src.menu_window.button_settings import SettingsButton
+from src.menu_window.button_instructions import InstructionsButton
 from src.scene import Scene
 from src import constant as c
 

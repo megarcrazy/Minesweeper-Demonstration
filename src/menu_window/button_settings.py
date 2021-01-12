@@ -1,6 +1,6 @@
 import pygame
 from src.helper_objects.button import Button
-from src.settings_scene.settings import Settings
+from src.settings_window.settings_scene import Settings
 import src.constant as c
 
 

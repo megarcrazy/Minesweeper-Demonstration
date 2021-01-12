@@ -1,5 +1,5 @@
 import pygame
-from src.menu_scene.menu import Menu
+from src.menu_window.menu_scene import Menu
 import constant as c
 
 
