@@ -1,12 +1,13 @@
 import pygame
+from src.object import Object
 from src.minesweeper_game.tile_border import TileBorder
 from src import constant as c
 
 
-class Tile:
+class Tile(Object):
 
     def __init__(self, screen, x, y, size, font):
-        self._screen = screen
+        super().__init__(screen)
         self._x, self._y = x, y
         self._size = size
         self._font = font

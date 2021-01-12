@@ -1,5 +1,8 @@
 class Object:
 
+    def __init__(self, screen):
+        self._screen = screen
+
     def update(self):
         pass
 

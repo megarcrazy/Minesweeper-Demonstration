@@ -9,7 +9,7 @@ from src import constant as c
 class Menu(Scene):
 
     def __init__(self, screen):
-        super().__init__()
+        super().__init__(screen)
         self._screen = screen
         self._buttons = []
         self.initialise()

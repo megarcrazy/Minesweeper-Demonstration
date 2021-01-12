@@ -6,6 +6,7 @@ import src.constant as c
 class Button(Object):
 
     def __init__(self, screen):
+        super().__init__(screen)
         self._x = None
         self._y = None
         self._width, self._height = 300, 100
@@ -14,8 +15,6 @@ class Button(Object):
         self._font = None
         self._centre = None
         self._text = None
-        self.screen = screen
-        self._screen = self.screen
         self._is_clicked = False
         self._font = pygame.font.SysFont(c.FONT, c.BUTTON_FONT_SIZE)
         self._scene_pointer = None

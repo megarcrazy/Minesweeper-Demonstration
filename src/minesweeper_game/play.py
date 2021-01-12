@@ -7,8 +7,7 @@ from src import constant as c
 class Play(Scene):
 
     def __init__(self, screen):
-        super().__init__()
-        self._screen = screen
+        super().__init__(screen)
         self._grid = None
         self.initialise()
 

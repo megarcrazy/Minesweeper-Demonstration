@@ -10,7 +10,7 @@ from src import constant as c
 class Grid(Object):
 
     def __init__(self, screen, width, height):
-        self._screen = screen
+        super().__init__(screen)
         self._width, self._height = width, height
         self._tile_grid = []
         self._tile_size = min(c.SCREEN_WIDTH, c.SCREEN_HEIGHT) // self._width

@@ -6,7 +6,7 @@ from src import constant as c
 class Tracker(Object):
 
     def __init__(self, screen, tile_size):
-        self._screen = screen
+        super().__init__(screen)
         self._location = None
         self._prev_location = None
         self._tile_size = tile_size
