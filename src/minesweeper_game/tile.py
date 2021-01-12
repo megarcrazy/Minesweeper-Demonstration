@@ -23,11 +23,12 @@ class Tile(Object):
         self._adjacent_bombs_count = 0
 
     def update(self):
+        self._border.update()
         if not self._revealed:
             if self._hover:
                 self._colour = c.POWDER_BLUE
             else:
-                self._colour = c.DARK_TURQUOISE
+                self._colour = c.DARK_SLATE_BLUE
         else:
             if self._bomb:
                 self._colour = c.RED
