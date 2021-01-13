@@ -12,6 +12,7 @@ class Play(Scene):
         self.initialise()
 
     def initialise(self):
+        # Initialise the minesweeper grid with given size for each tile
         self._grid = Grid(self._screen, c.SIZE, c.SIZE)
 
     def update(self):

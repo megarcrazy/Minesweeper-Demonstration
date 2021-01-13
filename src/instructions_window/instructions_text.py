@@ -7,7 +7,7 @@ class TextBody(Object):
 
     def __init__(self, screen):
         super().__init__(screen)
-        self._text = TextBody.break_text(
+        self._text = self.break_text(
             "Start by clicking any tile and the algorithm "
             + "will sweep the tiles if possible. Selecting "
             + "a tile with no adjacent bombs will cause unchecked "
@@ -27,6 +27,8 @@ class TextBody(Object):
             self._screen.blit(text, (self._x, self._y + vertical_text_gap))
             vertical_text_gap += c.FONT_SIZE
 
+    # Input text and the function splits the string into lines up to
+    # the length "split_size" and returns an array of strings.
     @staticmethod
     def break_text(text):
         broken_text = []

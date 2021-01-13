@@ -1,12 +1,7 @@
 import pygame
 from src.scene import Scene
 from src.helper_objects.back_message import BackMessage
-from src.settings_window.command_sweep import SweepCommand
-from src.settings_window.command_restart import RestartCommand
-from src.settings_window.setting_bomb_colour import SettingsBombColour
-from src.settings_window.setting_tile_colour import SettingsTileColour
-from src.settings_window.setting_tile_border_colour import SettingsTileBorderColour
-from src.settings_window.setting_next_tile_border_colour import SettingsNextTileBorderColour
+from src.settings_window.setting import Setting
 import src.constant as c
 
 
@@ -29,9 +24,15 @@ class Settings(Scene):
 
     def initialise_texts(self):
         x, y = 10, 10
-        self._texts.append(SweepCommand(self._screen, x, y))
-        self._texts.append(RestartCommand(self._screen, x, y + c.FONT_SIZE))
-        self._texts.append(SettingsBombColour(self._screen, x, y + c.FONT_SIZE * 2))
-        self._texts.append(SettingsTileColour(self._screen, x, y + c.FONT_SIZE * 3))
-        self._texts.append(SettingsTileBorderColour(self._screen, x, y + c.FONT_SIZE * 4))
-        self._texts.append(SettingsNextTileBorderColour(self._screen, x, y + c.FONT_SIZE * 5))
+        self._texts.append(Setting(self._screen, x, y, c.BLACK,
+                                   "Sweep button: Left mouse button"))
+        self._texts.append(Setting(self._screen, x, y + c.FONT_SIZE, c.BLACK,
+                                   "Restart Button: r"))
+        self._texts.append(Setting(self._screen, x, y + c.FONT_SIZE * 2, c.BOMB_TILE_COLOUR,
+                                   "This is the colour of revealed bomb tiles."))
+        self._texts.append(Setting(self._screen, x, y + c.FONT_SIZE * 3, c.UNREVEALED_TILE_COLOUR,
+                                   "This is the colour of unrevealed tiles."))
+        self._texts.append(Setting(self._screen, x, y + c.FONT_SIZE * 4, c.QUEUED_TILE_COLOUR,
+                                   "This is the colour of queued tile borders tiles."))
+        self._texts.append(Setting(self._screen, x, y + c.FONT_SIZE * 5, c.NEXT_TILE_COLOUR,
+                                   "This is the colour of the dequeued tile border."))

@@ -19,12 +19,18 @@ class Window:
                 if event.type == pygame.QUIT:
                     self._state = False
 
+            # Check for keyboard input in the pygame window
             self.keyboard_input()
+
             self._scene.update()
             self._scene.render()
+
+            # Scene changes if the scene next pointer is not pointing to itself
             self.manage_scene()
 
             pygame.time.wait(1)
+
+            # Draw pixels on the pygame window
             pygame.display.flip()
 
     def keyboard_input(self):

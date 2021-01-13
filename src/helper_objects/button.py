@@ -19,6 +19,8 @@ class Button(Object):
         self._font = pygame.font.SysFont(c.FONT, c.BUTTON_FONT_SIZE)
         self._scene_pointer = None
 
+    # A button is activated when it has been clicked with the left mouse button
+    # and released while the mouse cursor is still on the button.
     def check_on_click(self):
         mouse_left_click = pygame.mouse.get_pressed(3)[0]
         clicked = mouse_left_click
@@ -51,9 +53,12 @@ class Button(Object):
         rect = (self._x, self._y, self._width, self._height)
         return rect
 
+    # Clicking button changes the scene of the application
     def get_scene_pointer(self):
         return self._scene_pointer
 
+    # Pygame draws rectangles with [top_left_x, top_left_y, width, height].
+    # This function converts inputs to allow [centre_x, centre_y, width, height].
     @staticmethod
     def centre_rectangle(rect):
         centre_x, centre_y, width, height = rect

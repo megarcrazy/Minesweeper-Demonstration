@@ -1,7 +1,7 @@
 import pygame
 from src.scene import Scene
 from src.helper_objects.back_message import BackMessage
-from src.instructions_window.text_body import TextBody
+from src.instructions_window.instructions_text import TextBody
 import src.constant as c
 
 

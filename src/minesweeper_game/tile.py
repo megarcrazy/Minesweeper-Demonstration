@@ -16,7 +16,6 @@ class Tile(Object):
         self._border = TileBorder(screen, x, y, size)
         self._hover = False
         self._next_tile = False
-        self._checked = False
 
         self._revealed = False
         self._bomb = False
@@ -24,17 +23,22 @@ class Tile(Object):
 
     def update(self):
         self._border.update()
+
+        # Unrevealed tiles change colour when mouse hovers over them.
+        # Tile colour changes again when revealed depending whether
+        # it is a bomb or not.
         if not self._revealed:
             if self._hover:
-                self._colour = c.POWDER_BLUE
+                self._colour = c.HOVERED_TILE_COLOUR
             else:
-                self._colour = c.DARK_SLATE_BLUE
+                self._colour = c.UNREVEALED_TILE_COLOUR
         else:
             if self._bomb:
-                self._colour = c.RED
+                self._colour = c.BOMB_TILE_COLOUR
             else:
-                self._colour = c.WHITE_SMOKE
+                self._colour = c.REVEALED_TILE_COLOUR
 
+        # Reset hover status
         self._hover = False
 
     def render(self):
@@ -51,6 +55,8 @@ class Tile(Object):
     def render_tile_border(self):
         self._border.render()
 
+    # Centres tile text to the centre of the tile. If tile is not a bomb,
+    # it reveals information on how many adjacent tiles there are.
     def render_tile_text(self):
         if self._revealed and not self._bomb and self._adjacent_bombs_count != 0:
             text = self._font.render(str(self._adjacent_bombs_count), False, (0, 0, 0))
@@ -89,9 +95,3 @@ class Tile(Object):
 
     def toggle_next_tile(self):
         self._border.toggle_next_tile()
-
-    def toggle_checked(self):
-        self._checked = True
-
-    def get_checked(self):
-        return self._checked

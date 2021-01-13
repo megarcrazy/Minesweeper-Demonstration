@@ -12,7 +12,7 @@ class InstructionsButton(Button):
         self._text = "Instructions"
 
         self._scene_pointer = Instructions(self._screen)
-        rect = self.set_rectangle()
+        rect = (self._x, self._y, self._width, self._height)
         self._centre = rect[:2]
         self._rect = Button.centre_rectangle(rect)
         self._colour = c.TOMATO

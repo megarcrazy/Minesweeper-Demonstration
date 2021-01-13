@@ -32,12 +32,16 @@ class Grid(Object):
             for j in range(self._height):
                 self._tile_grid[i].append(Tile(self._screen, i, j, self._tile_size, self._font))
 
+    # Chooses a random number in the range of the amount of the tiles and adds the bomb
+    # to the respective tile.
     def add_bombs(self):
         self.reset_tiles()
         bombs_count = int(c.BOMB_PROPORTION * self._width * self._height)
         for _ in range(bombs_count):
             x = random.randint(0, self._width - 1)
             y = random.randint(0, self._height - 1)
+
+            # If a bomb is already in the tile, find another tile to add the bomb.
             while self._tile_grid[x][y].is_bomb():
                 x = random.randint(0, self._width - 1)
                 y = random.randint(0, self._height - 1)
@@ -59,6 +63,7 @@ class Grid(Object):
     def update(self):
         self.update_tiles()
         self.user_mouse_input()
+        self._tracker.update()
         self.sweep_queue()
 
     def render(self):
@@ -72,39 +77,49 @@ class Grid(Object):
         for i in range(len(self._tile_grid)):
             for j in range(len(self._tile_grid[0])):
                 self._tile_grid[i][j].update()
+
+                # Turns on the border for all tiles in the queue
                 self._tile_grid[i][j].toggle_border((i, j) in self._queue)
+
+                # The next tile is assigned to the first to be out of the queue
                 if self._queue and self._queue[0] == (i, j):
                     self._tile_grid[i][j].toggle_next_tile()
 
+    # Sweeps tile when the left mouse button is clicked on the tile
+    # Activates when there is no sweeping in progress
     def user_mouse_input(self):
         mouse_position = pygame.mouse.get_pos()
         x = mouse_position[0] // self._tile_size
         y = mouse_position[1] // self._tile_size
         self._tile_grid[x][y].set_hover_is_true()
 
-        clicked = pygame.mouse.get_pressed()[0]
+        clicked = pygame.mouse.get_pressed(3)[0]
         if clicked and not self._queue:
             self.sweep(x, y)
 
+    # Reveal an unrevealed tile and append surrounding tiles in a queue if
+    # they are not already checked. Like the real game, the first tile is always
+    # safe and there are no surrounding adjacent bombs.
     def sweep(self, x, y):
         tile = self._tile_grid[x][y]
         if self._first_click:
+
+            # Checks if the first clicked tile has adjacent bombs or is a bomb.
+            # Resets all the bombs until the condition is false.
             while tile.get_adjacent_bombs_count() != 0 or tile.is_bomb():
                 self.add_bombs()
             self._first_click = False
 
         if not tile.is_revealed():
             tile.reveal()
-            tile.toggle_checked()
             if tile.get_adjacent_bombs_count() == 0 and not tile.is_bomb():
                 for adjacent in AdjacentIndexList.get_adjacent_index_list():
                     adjacent_x = adjacent[0] + x
                     adjacent_y = adjacent[1] + y
                     if 0 <= adjacent_x < self._width and 0 <= adjacent_y < self._height:
                         tile = self._tile_grid[adjacent_x][adjacent_y]
-                        if (adjacent_x, adjacent_y) not in self._queue and not tile.get_checked():
+                        if (adjacent_x, adjacent_y) not in self._queue and not tile.is_revealed():
                             self._queue.append((adjacent_x, adjacent_y))
-                            tile.toggle_checked()
 
     def sweep_queue(self):
         if self._queue:
@@ -113,7 +128,8 @@ class Grid(Object):
                 self._tracker.update_prev_location((tile_x, tile_y))
                 self.sweep(tile_x, tile_y)
             if len(self._queue):
-                self._tracker.update(self._queue[0], self._counter)
+                self._tracker.update_next_location(self._queue[0])
+                self._tracker.update_counter(self._counter)
 
     def loop_delay(self):
         self._counter += 1

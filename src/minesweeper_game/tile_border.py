@@ -16,9 +16,9 @@ class TileBorder(Object):
 
     def update(self):
         if self._next_tile:
-            self._colour = c.ORANGE
+            self._colour = c.NEXT_TILE_COLOUR
         else:
-            self._colour = c.BLACK
+            self._colour = c.QUEUED_TILE_COLOUR
         self._on = False
         self._next_tile = False
 
