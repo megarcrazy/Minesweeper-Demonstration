@@ -1,9 +1,9 @@
 import pygame
-from src.object import Object
+from src.gameobject import GameObject
 from src import constant as c
 
 
-class Tracker(Object):
+class Tracker(GameObject):
 
     def __init__(self, screen, tile_size):
         super().__init__(screen)

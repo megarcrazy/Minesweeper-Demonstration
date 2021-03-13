@@ -1,9 +1,9 @@
 import pygame
-from src.object import Object
+from src.gameobject import GameObject
 import src.constant as c
 
 
-class TileBorder(Object):
+class TileBorder(GameObject):
 
     def __init__(self, screen, x, y, size):
         super().__init__(screen)

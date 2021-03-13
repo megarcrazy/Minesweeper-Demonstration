@@ -1,7 +1,7 @@
-from src.object import Object
+from src.gameobject import GameObject
 
 
-class Scene(Object):
+class Scene(GameObject):
 
     def __init__(self, screen):
         super().__init__(screen)

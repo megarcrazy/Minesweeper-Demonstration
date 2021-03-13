@@ -1,4 +1,4 @@
-class Object:
+class GameObject:
 
     def __init__(self, screen):
         self._screen = screen

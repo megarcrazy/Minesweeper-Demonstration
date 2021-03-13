@@ -1,13 +1,13 @@
 import pygame
 import random
-from src.object import Object
+from src.gameobject import GameObject
 from src.minesweeper_game.tile import Tile
 from src.minesweeper_game.adjancent_index_list import AdjacentIndexList
 from src.minesweeper_game.tracker import Tracker
 from src import constant as c
 
 
-class Grid(Object):
+class Grid(GameObject):
 
     def __init__(self, screen, width, height):
         super().__init__(screen)

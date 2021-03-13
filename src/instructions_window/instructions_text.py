@@ -1,9 +1,9 @@
 import pygame
-from src.object import Object
+from src.gameobject import GameObject
 import src.constant as c
 
 
-class TextBody(Object):
+class TextBody(GameObject):
 
     def __init__(self, screen):
         super().__init__(screen)

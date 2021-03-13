@@ -1,9 +1,9 @@
 import pygame
-from src.object import Object
+from src.gameobject import GameObject
 import src.constant as c
 
 
-class Setting(Object):
+class Setting(GameObject):
 
     def __init__(self, screen, x, y, colour, text):
         super().__init__(screen)

@@ -1,9 +1,9 @@
 import pygame
-from src.object import Object
+from src.gameobject import GameObject
 import src.constant as c
 
 
-class BackMessage(Object):
+class BackMessage(GameObject):
 
     def __init__(self, screen):
         super().__init__(screen)
