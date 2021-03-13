@@ -9,6 +9,7 @@
             "type": "python",
             "request": "launch",
             "program": "${workspaceRoot}/src/main.py",
+            "env": {"PYTHONPATH": "${workspaceRoot}"},
             "console": "integratedTerminal"
         }
     ]
